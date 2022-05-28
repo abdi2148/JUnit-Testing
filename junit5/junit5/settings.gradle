@@ -1,0 +1,3 @@
+rootProject.name = 'junit5'
+include 'junit5-mockito'
+include 'junit5-parameterized-tests'
