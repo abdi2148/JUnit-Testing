@@ -15,7 +15,7 @@ public class MockitoAnnotationTest {
 
     // If we don't want to call the mock methods manually on each dependency to be mocked, we can use the @Mock annotation on the dependencies
 
-    // We tell Mockito to scan all the dependencies with the @Mock annotations and let it do the initialisation
+    // We tell Mockito to scan all the dependencies with the @Mock annotations and let it do the initialisation (orderRepo)
     @Mock
     private OrderRepository orderRepository;
     private AutoCloseable closeable;
@@ -37,9 +37,9 @@ public class MockitoAnnotationTest {
     // Mockito will scan all the fields in this class that are annotated with the @Mock annotation and initialise them as mocks
     @Test
     void createOrderSetsTheCreationDate() {
-        when(orderRepository.save(any(Order.class))).then(returnsFirstArg());
-
         Order order = new Order();
+
+        when(orderRepository.save(any(Order.class))).then(returnsFirstArg());
 
         Order savedOrder = orderService.create(order);
 

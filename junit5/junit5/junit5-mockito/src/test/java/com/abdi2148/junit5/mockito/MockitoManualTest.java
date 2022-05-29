@@ -31,7 +31,7 @@ class MockitoManualTest {
         // Whenever the save method of the order repo mock is called return something, in this case return the first argument
         when(orderRepository.save(any(Order.class))).then(returnsFirstArg());
 
-        // When we now tell the order to create an order it will call order repo mock behind the scenes
+        // When we now tell the order service to create an order it will call order repo mock behind the scenes
         Order savedOrder = orderService.create(order);
 
         assertNotNull(savedOrder.getCreationDate());
